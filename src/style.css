@@ -1,0 +1,440 @@
+ 
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #f7faf8;
+  background: #07110d;
+  font-synthesis: none;
+  font-optical-sizing: auto;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% -20%, #193d2b 0%, #07110d 65%);
+}
+
+button, select { font: inherit; }
+button { cursor: pointer; }
+
+.topbar, footer {
+  min-height: 62px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.topbar { border-bottom: 1px solid #ffffff12; }
+
+.brand {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.brand span { color: #a5f55c; margin-right: 7px; }
+.brand b, footer b { color: #a5f55c; }
+
+.live-label {
+  color: #a4b8ac;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  font-weight: 800;
+}
+
+.live-label i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a5f55c;
+  margin-right: 7px;
+  box-shadow: 0 0 12px #a5f55c;
+}
+
+#game-shell {
+  position: relative;
+  width: min(1440px, 100%);
+  height: min(78vh, 780px);
+  min-height: 530px;
+  margin: 18px auto;
+  overflow: hidden;
+  isolation: isolate;
+  background: #173e26;
+  border: 1px solid #ffffff1a;
+  border-radius: 14px;
+  box-shadow: 0 24px 80px #0008;
+}
+
+#game {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+#game canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.match-hud {
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(460px, 92%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.score-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 14px 18px 23px;
+  position: relative;
+  background: #08120fee;
+  border: 1px solid #ffffff1c;
+  border-radius: 9px;
+  backdrop-filter: blur(12px);
+}
+
+.team-score {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .6px;
+}
+
+.team-score strong {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 6px;
+  font-weight: 900;
+  color: white;
+}
+
+.badge.blue { background: #2378ff; }
+.badge.red { background: #ef414b; }
+.badge.green { background: #159d63; }
+.badge.gold { background: #d5a52e; }
+
+.score-divider { color: #7f9186; font-weight: 700; }
+
+#clock {
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  padding: 5px 14px;
+  background: #a5f55c;
+  color: #07110d;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.match-status {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 7px 13px;
+  border-radius: 4px;
+  background: #07110dcf;
+  color: #c7e8b3;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.player-hud {
+  position: absolute;
+  z-index: 2;
+  left: 22px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  background: #08120fee;
+  border: 1px solid #ffffff20;
+  border-radius: 9px;
+  backdrop-filter: blur(12px);
+}
+
+.player-avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 7px;
+  background: linear-gradient(140deg, #a5f55c, #4da52e);
+  color: #07110d;
+  font-weight: 900;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 140px;
+}
+
+.player-info strong { font-size: 10px; letter-spacing: 1px; }
+.player-info span { color: #9db3a4; font-size: 9px; }
+
+.stamina {
+  height: 4px;
+  background: #425247;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#staminaBar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #a5f55c;
+  transition: width .15s;
+}
+
+.controls-hint {
+  margin-left: 12px;
+  padding-left: 15px;
+  border-left: 1px solid #ffffff25;
+  color: #b5c5ba;
+  font-size: 9px;
+  line-height: 2.2;
+}
+
+kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 19px;
+  height: 20px;
+  padding: 0 4px;
+  margin-right: 2px;
+  color: white;
+  background: #27372d;
+  border: 1px solid #ffffff28;
+  border-radius: 4px;
+  font-size: 10px;
+}
+
+.controls-hint span {
+  display: block;
+  color: #a5f55c;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+.screen {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 35px clamp(20px, 6vw, 88px);
+  background: linear-gradient(90deg, #06120def 0%, #06120dc9 35%, #06120d24 100%);
+}
+
+.hidden { display: none !important; }
+
+.menu-card {
+  width: min(370px, 100%);
+  animation: rise .5s ease both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  color: #a5f55c;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2.2px;
+}
+
+.menu-card h1 {
+  margin: 12px 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(54px, 7vw, 82px);
+  font-weight: 900;
+  line-height: .83;
+  letter-spacing: -1px;
+}
+
+.menu-card h1 span { color: #a5f55c; }
+
+.menu-description {
+  max-width: 320px;
+  margin: 22px 0;
+  color: #b2c0b7;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.menu-card label {
+  display: block;
+  margin: 15px 0 7px;
+  color: #b8c9be;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.6px;
+}
+
+.menu-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ffffff25;
+  border-radius: 5px;
+  outline: none;
+  background: #122219;
+  color: white;
+}
+
+.primary-button, .secondary-button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 13px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  border: 0;
+  background: #a5f55c;
+  color: #09130c;
+  transition: background .2s, transform .2s;
+}
+
+.primary-button:hover {
+  background: #c0ff8a;
+  transform: translateY(-2px);
+}
+
+.primary-button span { font-size: 22px; }
+
+.secondary-button {
+  background: #14251b;
+  border: 1px solid #ffffff22;
+  color: white;
+}
+
+.secondary-button:hover { background: #23392b; }
+
+.menu-note {
+  margin-top: 16px;
+  color: #728779;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.small-card { width: min(340px, 100%); }
+
+.small-card h1 { font-size: 60px; }
+
+#finalScore {
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.toast {
+  position: absolute;
+  z-index: 4;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(36px, 6vw, 70px);
+  font-weight: 900;
+  text-align: center;
+  text-shadow: 0 3px 25px #000a;
+  pointer-events: none;
+}
+
+footer {
+  min-height: 48px;
+  color: #6f8275;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 650px) {
+  #game-shell {
+    height: 76vh;
+    min-height: 570px;
+    margin: 8px auto;
+    border-radius: 8px;
+  }
+
+  .live-label { font-size: 8px; }
+  .topbar { padding: 0 12px; }
+
+  .screen {
+    align-items: flex-end;
+    padding: 25px 20px;
+    background: linear-gradient(0deg, #06120df5 0%, #06120da8 55%, #06120d12 100%);
+  }
+
+  .menu-card { width: 100%; }
+  .menu-card h1 { font-size: 55px; }
+
+  .score-panel { gap: 8px; padding: 12px 8px 22px; }
+  .team-score { gap: 5px; font-size: 8px; }
+  .team-score strong { font-size: 24px; }
+  .badge { width: 22px; height: 22px; }
+
+  .player-hud {
+    left: 10px;
+    bottom: 10px;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .player-avatar { width: 32px; height: 32px; }
+  .player-info { min-width: 100px; }
+  .controls-hint { display: none; }
+
+  footer {
+    padding: 12px;
+    font-size: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+}

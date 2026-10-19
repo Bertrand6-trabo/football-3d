@@ -1,0 +1,112 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07150f">
+  <title>Football Arena | 3D Match</title>
+</head>
+<body>
+  <div id="app">
+    <div class="topbar">
+      <div class="brand"><span>⚽</span> FOOTBALL <b>ARENA</b></div>
+      <div class="live-label"><i></i> 3D MATCH EXPERIENCE</div>
+    </div>
+
+    <section id="game-shell">
+      <div id="game"></div>
+
+      <div class="match-hud">
+        <div class="score-panel">
+          <div class="team-score">
+            <span id="homeBadge" class="badge blue">B</span>
+            <span id="homeName">BLUE FC</span>
+            <strong id="homeScore">0</strong>
+          </div>
+          <div class="score-divider">:</div>
+          <div class="team-score">
+            <strong id="awayScore">0</strong>
+            <span id="awayName">RED UNITED</span>
+            <span id="awayBadge" class="badge red">R</span>
+          </div>
+          <div id="clock">00:00</div>
+        </div>
+
+        <div class="match-status" id="matchStatus">READY FOR KICK-OFF</div>
+      </div>
+
+      <div class="player-hud">
+        <div class="player-avatar">10</div>
+        <div class="player-info">
+          <strong>YOUR PLAYER</strong>
+          <span id="playerState">WAITING FOR KICK-OFF</span>
+          <div class="stamina"><span id="staminaBar"></span></div>
+        </div>
+        <div class="controls-hint">
+          <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> MOVE
+          <span>SPACE SHOOT</span>
+        </div>
+      </div>
+
+      <div id="toast" class="toast"></div>
+
+      <div id="startScreen" class="screen">
+        <div class="menu-card">
+          <div class="eyebrow">YOUR JOURNEY STARTS HERE</div>
+          <h1>OWN THE<br><span>PITCH.</span></h1>
+          <p class="menu-description">
+            Pick your club. Face the opposition. Make every goal count.
+          </p>
+
+          <label for="team1">YOUR TEAM</label>
+          <select id="team1">
+            <option value="blue">Blue FC</option>
+            <option value="red">Red United</option>
+            <option value="green">Green City</option>
+            <option value="gold">Golden Stars</option>
+          </select>
+
+          <label for="team2">OPPONENT</label>
+          <select id="team2">
+            <option value="red">Red United</option>
+            <option value="blue">Blue FC</option>
+            <option value="green">Green City</option>
+            <option value="gold">Golden Stars</option>
+          </select>
+
+          <button id="startGame" class="primary-button">KICK OFF <span>→</span></button>
+          <p class="menu-note">5v5 • COMPUTER OPPONENT • 90-SECOND MATCH</p>
+        </div>
+      </div>
+
+      <div id="pauseScreen" class="screen hidden">
+        <div class="menu-card small-card">
+          <div class="eyebrow">TAKE A BREATHER</div>
+          <h1>MATCH<br><span>PAUSED.</span></h1>
+          <button id="resumeGame" class="primary-button">RESUME MATCH →</button>
+          <button id="restartGame" class="secondary-button">RESTART MATCH</button>
+          <button id="mainMenu" class="secondary-button">MAIN MENU</button>
+        </div>
+      </div>
+
+      <div id="endScreen" class="screen hidden">
+        <div class="menu-card small-card">
+          <div class="eyebrow">FULL TIME</div>
+          <h1 id="endTitle">FULL<br><span>TIME.</span></h1>
+          <p id="finalScore"></p>
+          <button id="playAgain" class="primary-button">PLAY AGAIN →</button>
+          <button id="endMenu" class="secondary-button">MAIN MENU</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>FOOTBALL ARENA <b>3D</b></span>
+      <span>WASD / ARROWS · SPACE TO SHOOT · SHIFT TO SPRINT · P TO PAUSE</span>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
